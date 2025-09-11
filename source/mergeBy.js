@@ -25,7 +25,7 @@ const mergeBy = (objects1, objects2, keyPooling) => {
     if (!Array.isArray(objects2)){
         throw new Error("objects2 must be an array")
     }
-    if (typeof keyPooling !== "string"){
+    if (typeof keyPooling !== "string" && !(keyPooling instanceof String)){
         throw new Error("keyPooling must be a string")
     }
     const map = new Map();
@@ -52,7 +52,7 @@ const mergeBy = (objects1, objects2, keyPooling) => {
         }
     }
 
-    processArray(Array.prototype.concat(objects1, objects2));
+    processArray(objects1.concat(objects2));
     return Array.from(map.values());
 }
 

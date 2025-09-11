@@ -122,4 +122,18 @@ QUnit.module("Тестируем функцию mergeBy", function() {
             )
         }
     });
+
+    QUnit.test("Работает правильно с new String()", function(assert) {
+        const array1 = [
+            { id: 1, name: "Alice", tags: ["friend"] },
+            { id: 2, name: "Bob", tags: ["colleague"] }
+        ];
+        const array2 = [];
+        const result = mergeBy(array1, array2, new String("id"));
+
+        assert.deepEqual(result, [
+            { id: 1, name: "Alice", tags: ["friend"] },
+            { id: 2, name: "Bob", tags: ["colleague"] }
+        ]);
+    });
 });
